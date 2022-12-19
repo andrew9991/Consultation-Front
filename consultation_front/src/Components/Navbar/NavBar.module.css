@@ -1,0 +1,38 @@
+.navBar{
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 10px 10%;
+}
+
+.navList{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    list-style: none;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.navListItem{
+    padding: 0 10px;
+}
+
+.navListItem a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.navHeader{
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+}
+

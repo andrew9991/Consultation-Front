@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../Axios";
 import NavBar from "../Navbar/NavBar";
@@ -12,11 +12,12 @@ function EditProfile() {
     // const [user_name, setUserName] = useState(user.user_name);
     const [nationality, setNationality] = useState(user.nationality);
     const [birth_date, setBirthDate] = useState(user.birth_date);
+    const [gender, setGender] = useState(user.gender);
+
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
 
     const [error, setError] = useState('');
-    const [hidden, setHidden] = useState(true);
     const navigate = useNavigate();
     async function editProfile() {
         if(first_name === '' || last_name === '' || 
@@ -30,6 +31,7 @@ function EditProfile() {
             userToEdit.last_name = last_name;
             userToEdit.nationality = nationality;
             userToEdit.birth_date = birth_date;
+            userToEdit.gender = gender;
             const response = await api.post(`/user/update/`, {
                 ...userToEdit
             });
@@ -64,6 +66,16 @@ function EditProfile() {
             setError('Something went wrong');
         }
     }
+    useEffect(() => {
+        let genders = document.getElementsByName("gender");
+        if(user.gender === "male"){
+            genders[0].checked = true;
+        }
+        else{
+            genders[1].checked = true;
+        }
+    }
+    , [])
 
     return ( 
         <div className="home">
@@ -101,6 +113,21 @@ function EditProfile() {
                                     <input type="date" id="birthdate" className={`input ${classes.inp}`} value={birth_date} onChange={(e) => setBirthDate(e.target.value)}></input>
                                 </div>
                                 <br />
+                                <div className={`${classes.flex}`}>
+                                    <div className={"flex " + classes.radios}>
+                                        <label className={classes.label} htmlFor="gender">Gender</label>
+                                        <div className={classes.f}>
+                                            <input type="radio" id = "male" name="gender" value={"male"} onClick={(e) => {
+                                                setGender(e.target.value);
+                                                }}/>
+                                            <label htmlFor="male">Male</label>
+                                        </div>
+                                        <div className={classes.g}>
+                                            <input type="radio" id = "female" name="gender" value={"female"} onClick={(e) => setGender(e.target.value)}/>
+                                            <label htmlFor="female">Female</label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className={classes.edit}>

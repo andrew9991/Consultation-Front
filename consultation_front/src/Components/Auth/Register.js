@@ -34,6 +34,10 @@ function Register() {
             setError(err.response.data.error);
         });
         if (res.status === 200) {
+            if(res.data.type == 1 && !res.data.is_approved){
+                setError('Wait for an admin to approve your account');
+                return;
+            }
             userContext.login(res.data.Access);
             localStorage.setItem('user', JSON.stringify(res.data));
             //redirect to home

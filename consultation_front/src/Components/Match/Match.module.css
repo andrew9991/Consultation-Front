@@ -38,9 +38,11 @@
     justify-content: space-between;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.9);
-    padding: 0 10px;
+    padding: 5px 10px 0 10px;
     border-radius: 10px;
     margin-top: 5px;
+    max-width: 90vw;
+    overflow-x: scroll;
 }
 
 .reserveButton{
@@ -70,3 +72,5 @@
     justify-content: center;
     align-items: center;
 }
+
+

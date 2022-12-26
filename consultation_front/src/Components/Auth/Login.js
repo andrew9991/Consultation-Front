@@ -22,10 +22,19 @@ function Login() {
         });
         if (res.status === 200) {
             // console.log(res.data);
+            if(res.data.type == 1 && !res.data.is_approved){
+                setError('Your account is not approved yet');
+                return;
+            }
             userContext.login(res.data.Access);
             localStorage.setItem('user', JSON.stringify(res.data));
             //redirect to home
-            navigate('/home');
+            console.log(res.data.type === 0);
+            if(res.data.type === 0)
+                navigate('/admin');
+            else
+                 navigate('/home');
+            window.location.reload();
         } 
     }
     return (  

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import api from "./Axios";
 
 export const UserContext = createContext({
     token: "",
@@ -73,10 +74,12 @@ export const UserProvider = ({ children }) => {
     setToken(token);
     // setAdmin(admin);
     localStorage.setItem("token", token);
+    // console.log(localStorage.getItem("token"));
+    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     // localStorage.setItem("expirationTime", expirationTime);
     // localStorage.setItem("admin", admin);
     // const remainingTime = calculateRemainingTime(expirationTime);
-    logoutTimer = setTimeout(logoutHandler, 3600000);
+    logoutTimer = setTimeout(logoutHandler, 36000000);
   };
 
   useEffect(() => {

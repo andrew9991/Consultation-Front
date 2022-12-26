@@ -5,10 +5,9 @@ import classes from "./Seats.module.css";
 function Seats(props) {
   var i = 0;
   const [update, setUpdate] = useState(true);
-  const [selectedRow, setSelectedRow] = useState(null);
-  const [selectedCol, setSelectedCol] = useState(null);
   const [mouseDown, setMouseDown] = useState(0);
   const userContext = useContext(UserContext);
+  const user = JSON.parse(localStorage.getItem("user"));
     // console.log(props.seatsArray);
     document.body.onmousedown = function() { 
     setMouseDown(mouseDown + 1);
@@ -32,7 +31,7 @@ function Seats(props) {
         //  }
     // }, [seatsArray]);
   function selectSeat(rowIndex, colIndex) {
-    if(!userContext.isLoggedIn) return;
+    if(!userContext.isLoggedIn || user.type !== 2) return;
     
     switch (props.seatsArray[rowIndex][colIndex]) {
         case 1:

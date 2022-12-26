@@ -30,7 +30,7 @@ function Match() {
             seats = seats.data;
             // console.log(seats.data);
             let sa = decryptSeats();
-            if(user != null){
+            if(user != null && user.type == 2){
                 let res = await api.get(`/reservations/user/`);
                 res = res.data;
                 // console.log(res);
@@ -113,14 +113,23 @@ function Match() {
                     <div className={`${seatClasses.seat} ${seatClasses.cancelReservation}`}></div>
                     <p className="mr-10">Cancel Reservation</p>
                 </div>
-                {userContext.isLoggedIn && user.type != 3 &&
+                {userContext.isLoggedIn && user.type == 2 &&
                 <div className={`flex ${classes.buttons}`}>
                     <NavLink className={`noDec mr-10`} to={"/reserve"} state ={{matchId: match_id,
                         seatsArray: JSON.stringify(seatsArray)}}>
-                        <div className={`${classes.reserveButton}`}>Reserve Seats</div>
+                        <div className={`${classes.reserveButton} mr-10`}>Reserve Seats</div>
                     </NavLink>
                     
                     <div className={`${classes.reserveButton} ${classes.cancelButton}`} onClick = {cancelReservations}>Cancel Reservations</div>
+                </div>}
+
+                {userContext.isLoggedIn && user.type == 1 &&
+                <div className={`flex ${classes.buttons}`}>
+                    <NavLink className={`noDec mr-10`} to={`/edit_match/${matchData.match_id}`}>
+                        <div className={`${classes.reserveButton} mr-10`}>Edit Match</div>
+                    </NavLink>
+                    
+                    <div className={`${classes.reserveButton} ${classes.cancelButton}`} onClick = {cancelReservations}>Delete Match</div>
                 </div>}           
                 <h1 className={classes.center}>Match Details</h1>
                 {matchData != null && 

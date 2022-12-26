@@ -70,3 +70,19 @@
     border-radius: 10px;
     padding: 5px;
 }
+
+.radios{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.f{
+    margin-left: -50px;
+}
+
+.g{
+    margin-right: 50px;
+}

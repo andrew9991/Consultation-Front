@@ -16,6 +16,15 @@ function NavBar() {
                 </h1>
             </NavLink>
             <ul className={classes.navList}>
+                {user != null  && user.type == 1 &&
+                    <li className={classes.navListItem}>
+                        <NavLink to={`/manager_matches/${user.user_id}`} className="noDec">
+                            <p className={classes.navListHeader}>
+                                My Matches
+                            </p>
+                        </NavLink>
+                    </li>
+                }
                 {user != null &&
                     <li className={classes.navListItem}>
                         <NavLink to={`/profile/${user.user_id}`} className="noDec">

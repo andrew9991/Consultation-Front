@@ -1,0 +1,82 @@
+.admin{
+    display: flex;
+    min-height: 100vh;
+}
+
+.dashboard{
+    min-width: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding: 0;
+    background: linear-gradient(#1CB195,#94C840);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-right: 15px;
+
+}
+
+.dboardHeader{
+    margin: 0;
+    padding: 20px;
+}
+
+.dboardHeader:hover{
+    cursor: pointer;
+    background-color: #3be0c2;
+}
+
+.dboardH{
+    padding: 0 20px;
+}
+
+.active{
+    background-color: #0a7662;
+}
+
+.users{
+    overflow-x: scroll;
+}
+
+.table{
+    border-collapse: collapse;
+}
+
+.headRow{
+    background-color: #0a7662;
+    color: white;
+}
+
+.headRow th{
+    /* cursor: pointer; */
+    user-select: none;
+}
+
+.userRowE{
+    background-color: white;
+}
+
+.userRowO{
+    background-color: #e6e6e6;
+}
+
+.deleteButton{
+    background-color: #f71e1e;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+.deleteButton:hover{
+    cursor: pointer;
+}
+
+.approve{
+    background-color: #0f4373;
+}

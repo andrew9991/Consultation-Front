@@ -1,32 +1,66 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../../UserContext";
 import classes from "./Seats.module.css";
 
 function Seats(props) {
   var i = 0;
-  var seatsArray = props.seatsArray;
   const [update, setUpdate] = useState(true);
   const [selectedRow, setSelectedRow] = useState(null);
-    const [selectedCol, setSelectedCol] = useState(null);
+  const [selectedCol, setSelectedCol] = useState(null);
+  const [mouseDown, setMouseDown] = useState(0);
+  const userContext = useContext(UserContext);
+    // console.log(props.seatsArray);
+    document.body.onmousedown = function() { 
+    setMouseDown(mouseDown + 1);
+    }
+    document.body.onmouseup = function() {
+    setMouseDown(mouseDown - 1);
+    }
+    
+    // useEffect(() => {
+
+    //     if(seatsArray.length === 0) return;
+    //     // const stadium = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1]; 
+    //     const start = parseInt(seatsArray.length / 2 - 2);
+    //     console.log(start);
+        // for (var j = start ; j < start + 6; j++) {
+        //     const middleIndex = Math.ceil(seatsArray[j].length / 2);
+        //     console.log(seatsArray[8]);
+        //     const firstHalf = seatsArray[j].splice(0, middleIndex);   
+        //     const secondHalf = seatsArray[j].splice(-middleIndex);
+            // console.log(firstHalf, secondHalf);
+        //  }
+    // }, [seatsArray]);
   function selectSeat(rowIndex, colIndex) {
-    if(seatsArray[rowIndex][colIndex] === 1) return;
-
-    if(seatsArray[rowIndex][colIndex] === 2){
-        seatsArray[rowIndex][colIndex] = 0;
-        setSelectedCol(null);
-        setSelectedRow(null);
-
+    if(!userContext.isLoggedIn) return;
+    
+    switch (props.seatsArray[rowIndex][colIndex]) {
+        case 1:
+            return;
+        case 2:
+            props.seatsArray[rowIndex][colIndex] = 0;
+            break;
+        case 3:
+            props.seatsArray[rowIndex][colIndex] = 4;
+            break;
+        case 4:
+            props.seatsArray[rowIndex][colIndex] = 3;
+            break;
+        default:
+            props.seatsArray[rowIndex][colIndex] = 2;
+            break;
     }
-    else {
-        seatsArray[rowIndex][colIndex] = 2;
-        if(selectedRow != null){
-            seatsArray[selectedRow][selectedCol] = 0;
-        }
-        setSelectedRow(rowIndex);
-        setSelectedCol(colIndex);
-    }
-
+    
     setUpdate(!update);
-    props.setSeatsArray(seatsArray);
+    props.setSeatsArray((prev) => {
+        return [...prev];
+    });
+  }
+
+  function selectHoveredSeats(rowIndex, colIndex) {
+    //check if mouse is clicked
+    if(mouseDown === 0) return;
+    selectSeat(rowIndex, colIndex);
   }
 
   function getClass(seat) {
@@ -37,14 +71,18 @@ function Seats(props) {
             return classes.reserved;
         case 2:
             return classes.selected;
+        case 3:
+            return classes.youReserved;
+        case 4:
+            return classes.cancelReservation;
         default:
             return classes.empty;
     }
   }
   return (
     <div className={classes.seats}>
-      {seatsArray &&
-        seatsArray.map((row, rowIndex) => {
+      {props.seatsArray &&
+        props.seatsArray.map((row, rowIndex) => {
           return (
             <div key={`${rowIndex} ${i++}`} className={`flex`}>
               {row.map((seat, colIndex) => {
@@ -55,8 +93,8 @@ function Seats(props) {
                       classes.seat
                     }`}
                     onClick={() => selectSeat(rowIndex, colIndex)}
+                    onMouseOver={() => selectHoveredSeats(rowIndex, colIndex)}
                   >
-                    {`${rowIndex}x${colIndex}`}
                   </div>
                 );
               })}

@@ -30,7 +30,8 @@ function Home () {
     
     return (  
         <div className={classes.home}>
-            <NavBar></NavBar>
+            <div className="habdZaka">
+                <NavBar></NavBar>
                 <div className={classes.matches}>
                     {matches.length > 0 ? matches.map((match) => {
                         return (
@@ -42,8 +43,8 @@ function Home () {
                     <div className={classes.rings}>
                         <Rings color="#3EB489" height={80} width={80} />
                     </div>
-                    }
-                    
+                    }     
+                </div>
             </div>
         </div>
     );

@@ -6,7 +6,7 @@ function MatchCard(props) {
         <NavLink className="noDec" to={`/match/${props.data.match_id}`}>
             <div className={classes.card}>
                 <div className={classes.cardHeader}>
-                    <h1>{props.data.team_A} <span className={classes.vs}>VS</span> {props.data.team_B}</h1>
+                    <h1>{props.data.team_A} <span className={`${classes.vs} linearRB`}>VS</span> {props.data.team_B}</h1>
                 </div>
                 <div className={classes.cardBody}>
                     <div className={classes.cardBodyLeft}>

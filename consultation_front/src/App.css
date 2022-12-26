@@ -31,7 +31,7 @@ body{
 }
 
 .linearRB{
-    background: linear-gradient(to right, #0f4373, #f71e1e);
+    background: linear-gradient(to right, #0084ff, #f71e1e);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -40,6 +40,7 @@ body{
 .noDec{
     text-decoration: none;
     color: initial;
+    display: contents;
 }
 
 ::-webkit-scrollbar {
@@ -71,4 +72,39 @@ body{
     font-size: 1rem;
     margin: 0;
     padding: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+.home{
+    background-image: url("./Assets/Images/home.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    height: 100%;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+.habdZaka{
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.centerm{
+    margin-right: auto;
+    margin-left: auto;
+    width: fit-content;
 }

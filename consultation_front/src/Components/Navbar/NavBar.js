@@ -16,6 +16,15 @@ function NavBar() {
                 </h1>
             </NavLink>
             <ul className={classes.navList}>
+                {user != null &&
+                    <li className={classes.navListItem}>
+                        <NavLink to={`/profile/${user.user_id}`} className="noDec">
+                            <p className={classes.navListHeader}>
+                                Profile
+                            </p>
+                        </NavLink>
+                    </li>
+                }
                 <li className={classes.navListItem}>
                     {user != null ? 
                         <p className={classes.navListHeader} onClick = {() => {

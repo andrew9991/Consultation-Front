@@ -1,0 +1,72 @@
+.editProfile{
+    color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.details{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.inp{
+    max-width: 500px;
+    margin-left: 10px;
+}
+
+.label{
+    margin-right: 10px;
+    width: 150px;
+    font-weight: 800;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;        
+}
+
+.button{
+    background-color: rgba(31, 109, 176, 1);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 25px;
+    margin: 5px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+.hidden{
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.password{
+    transition: max-height 0.5s ease-in-out;
+}
+
+.error{
+    color: red;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 5px;
+}

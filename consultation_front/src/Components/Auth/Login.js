@@ -17,17 +17,16 @@ function Login() {
             user_name: data.username,
             user_password: data.password
         }).catch((err) => {
-            console.log(err.response);
+            // console.log(err.response.data.error);
+            setError(err.response.data.error);
         });
         if (res.status === 200) {
-            console.log(res.data);
+            // console.log(res.data);
             userContext.login(res.data.Access);
             localStorage.setItem('user', JSON.stringify(res.data));
             //redirect to home
             navigate('/home');
-        } else {
-            setError(res.data.message);
-        }
+        } 
     }
     return (  
         <div className={classes.background}>
@@ -54,7 +53,9 @@ function Login() {
                             </div>
                         </div>
                     </form>
-
+                    <div>
+                        <p className="error">{error}</p>
+                    </div>
                 </div>
                 
             </div>

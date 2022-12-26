@@ -34,7 +34,7 @@
     display: flex;
     margin: 0 auto;
     color: white;
-    width: max-content;
+    width: 300px;
 }
 
 .navListHeader:hover{

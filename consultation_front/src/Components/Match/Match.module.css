@@ -7,8 +7,14 @@
 .match{
     min-height: 100vh;
     height: 100%;
-    background: linear-gradient(to right, #0f4373, #f71e1e);
+    /* background: linear-gradient(to right, #0f4373, #f71e1e); */
+    background: url("../../Assets/Images/home.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+
 
 .body{
     color:white
@@ -21,8 +27,46 @@
     margin-right: auto;
     margin-left: auto;
     margin-top: 20px;
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    color: black;
+    color: white;
+}
+
+.info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.reserveButton{
+    background-color: #0f4373;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: fit-content;
+
+}
+
+.cancelButton{
+    background-color: #f71e1e;
+}
+
+.cancelButton:hover{
+    cursor: pointer;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

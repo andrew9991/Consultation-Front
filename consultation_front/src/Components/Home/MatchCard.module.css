@@ -1,5 +1,5 @@
 .card{
-    background-color: rgba(255, 255, 255,1);
+    background-color: rgba(0, 0, 0, 0.8);
     padding: 10px;
     border-radius: 10px;
     width: max-content;
@@ -10,6 +10,7 @@
     align-items: center;
     transition: all 0.2s ease-in-out;
     min-width: 370px;
+    color: white;
 }
 
 .card:hover{
@@ -19,10 +20,6 @@
 
 .vs{
     font-weight: 700;
-    background: linear-gradient(to right, #0f4373, #f71e1e);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     font-size: 2rem;
 }
 

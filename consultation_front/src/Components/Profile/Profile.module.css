@@ -1,0 +1,69 @@
+.profile{
+    color: white;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.details{
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 5px 10px 0 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: scroll;
+    min-width: 800px;
+}
+
+.headers{
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.head{
+    width: max-content;
+}
+
+.reservation{
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 400px;
+    transition: all 0.2s ease-in-out;
+}
+
+.reservation:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.edit{
+    background-color: rgba(31, 109, 176, 1);
+    color: white;
+    padding: 0px 25px;
+    margin: 5px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+.center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,20 +1,30 @@
 .reserved{
-    background-color: red;
+    background-color: rgba(149, 137, 134, 0.5);
 }
 
 .empty{
-    background-color: blue;
+    background-color: rgba(250, 182, 72, 0.8);
 }
 
 .selected{
-    background-color: green;
+    background-color: rgba(89, 215, 203, 1);
+}
+
+.youReserved{
+    background-color: rgb(70, 205, 81);
+}
+
+.cancelReservation{
+    background-color: rgba(255, 0, 0, 0.8);
 }
 
 .seat{
     border-radius: 5px;
     margin: 2px;
     padding: 4px;
-    min-width: 40px;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
     color: white;
     text-align: center;
     font-weight: 800;
@@ -36,5 +46,6 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0);
 }
+

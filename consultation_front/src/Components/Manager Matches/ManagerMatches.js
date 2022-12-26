@@ -43,7 +43,7 @@ function ManagerMatches() {
                     {matches.length > 0 && 
                     matches.map((match) => {
                         return (
-                            <NavLink to={`/match/${match.match_id}`} className="noDec">
+                            <NavLink key={match.match_id} to={`/match/${match.match_id}`} className="noDec">
                                 <div className={classes.match}>
                                     <div className={classes.flex}>
                                             <h2>{match.teamA.team_name}</h2>

@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom';
+import formatDateTime from '../formatDateTime';
 import classes from './MatchCard.module.css';
 function MatchCard(props) {
     // console.log(props);
+    
     return (  
         <NavLink className="noDec" to={`/match/${props.data.match_id}`}>
             <div className={classes.card}>
@@ -14,7 +16,7 @@ function MatchCard(props) {
                         <h2 className='linearRB'>Venue</h2>
                     </div>
                     <div className={classes.cardBodyRight}>
-                        <h2>{props.data.date}</h2>
+                        <h2>{formatDateTime(props.data.date)}</h2>
                         <h2>{props.data.venue}</h2>
                     </div>
                 </div>

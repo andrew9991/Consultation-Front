@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import api from "../../Axios";
+import formatDateTime from "../formatDateTime";
 import NavBar from "../Navbar/NavBar";
 import classes from './ManagerMatches.module.css';
 
@@ -51,7 +52,7 @@ function ManagerMatches() {
                                             <h2>{match.teamB.team_name}</h2>
                                     </div>
                                     <div className={classes.flex}>
-                                        <h2>{match.date}</h2>
+                                        <h2>{formatDateTime(match.date)}</h2>
                                     </div>
                                 </div>
                             </NavLink>

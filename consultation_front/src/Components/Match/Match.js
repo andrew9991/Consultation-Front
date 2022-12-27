@@ -7,6 +7,7 @@ import classes from './Match.module.css';
 import seatClasses from './Seats.module.css';
 import Seats from "./Seats";
 import { UserContext } from "../../UserContext";
+import formatDateTime from "../formatDateTime";
 
 function Match() {
     var match_id = useParams().match_id;
@@ -127,9 +128,7 @@ function Match() {
                 <div className={`flex ${classes.buttons}`}>
                     <NavLink className={`noDec mr-10`} to={`/edit_match/${matchData.match_id}`}>
                         <div className={`${classes.reserveButton} mr-10`}>Edit Match</div>
-                    </NavLink>
-                    
-                    <div className={`${classes.reserveButton} ${classes.cancelButton}`} onClick = {cancelReservations}>Delete Match</div>
+                    </NavLink>                    
                 </div>}           
                 <h1 className={classes.center}>Match Details</h1>
                 {matchData != null && 
@@ -138,7 +137,7 @@ function Match() {
                         <h2>{matchData.team_A} <span className="linearRB">VS</span> {matchData.team_B}</h2>
                     </div>
                     <div>
-                        <h3><span className="linearRB">Date: </span> {matchData.date}</h3>
+                        <h3><span className="linearRB">Date: </span> {formatDateTime(matchData.date)}</h3>
                         <h3><span className="linearRB">Venue: </span> {matchData.venue}</h3>
                         <h3><span className="linearRB">Referee: </span> {matchData.referee}</h3>
                         <h3><span className="linearRB">Linesman 1: </span> {matchData.linesman1}</h3>

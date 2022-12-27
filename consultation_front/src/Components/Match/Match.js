@@ -14,6 +14,7 @@ function Match() {
     var venueData,seats;
     const [matchData, setMatchData] = useState({});
     const [seatsArray, setSeatsArray] = useState([]);
+    const [isDone, setIsDone] = useState(false);
     const userContext = useContext(UserContext);
     const user = JSON.parse(localStorage.getItem("user"));
     //stadium 2d array 6x10 with value -1
@@ -22,6 +23,11 @@ function Match() {
             
             let md = await api.get(`/matches/${match_id}`);
             md = await getMatchData(md.data);
+            let today = new Date();
+            let date = new Date(md.date);
+            if(date < today){
+                setIsDone(true);
+            }
             // console.log(md);
             setMatchData(md);
             venueData = await api.get(`/venues/${md.venue}`);
@@ -41,6 +47,7 @@ function Match() {
                     }
                 }
             }
+            
             setSeatsArray(sa);
             // console.log(seatsArray);
         } catch (err) {
@@ -115,21 +122,27 @@ function Match() {
                     <p className="mr-10">Cancel Reservation</p>
                 </div>
                 {userContext.isLoggedIn && user.type == 2 &&
-                <div className={`flex ${classes.buttons}`}>
+                (!isDone ? <div className={`flex ${classes.buttons}`}>
                     <NavLink className={`noDec mr-10`} to={"/reserve"} state ={{matchId: match_id,
                         seatsArray: JSON.stringify(seatsArray)}}>
                         <div className={`${classes.reserveButton} mr-10`}>Reserve Seats</div>
                     </NavLink>
                     
                     <div className={`${classes.reserveButton} ${classes.cancelButton}`} onClick = {cancelReservations}>Cancel Reservations</div>
-                </div>}
+                </div>
+                :
+                <div className={classes.over}>
+                    Match Already Over
+                </div>
+                )}
 
                 {userContext.isLoggedIn && user.type == 1 &&
                 <div className={`flex ${classes.buttons}`}>
                     <NavLink className={`noDec mr-10`} to={`/edit_match/${matchData.match_id}`}>
                         <div className={`${classes.reserveButton} mr-10`}>Edit Match</div>
                     </NavLink>                    
-                </div>}           
+                </div>}     
+                <hr />      
                 <h1 className={classes.center}>Match Details</h1>
                 {matchData != null && 
                 <div className={classes.details}>
